@@ -9,6 +9,8 @@
   "author": "slowak",
   "license": "ISC",
   "dependencies": {
-    "redis": "^3.0.2"
+    "mongoose": "^5.9.5",
+    "redis": "^3.0.2",
+    "validator": "^12.2.0"
   }
 }
