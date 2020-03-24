@@ -1,29 +1,44 @@
 let mongoose = require('mongoose')
-let validator = require('validator')
 
 let deviceSchema = new mongoose.Schema({
-  email: {
+  name: {
     type: String,
     required: true,
     unique: true,
-    lowercase: true,
-    validate: (value) => {
-      return validator.isEmail(value)
-    }
   },
-  updatedAt: Date,
+  time: {
+    type: String,
+    required: true,
+  },
+  mode: {
+    type: String,
+    required: true,
+  },
+  phase: {
+    type: Number,
+    required: true,
+  },
+  script: {
+    type: String,
+    required: true,
+  },
+  cycle: {
+    type: String,
+    required: true,
+  },
+  Fa: [String],
+  DA: [String],
+  editedAt: Date,
   createdAt: Date
 })
 
 deviceSchema.pre('save', function (next) {
-    let now = Date.now()
-     
-    this.updatedAt = now
+    let now = Date.now()     
+    this.editedAt = now
     // Set a value for createdAt only if it is null
     if (!this.createdAt) {
       this.createdAt = now
-    }
-    
+    }    
     // Call the next function in the pre-save chain
     next()    
   })

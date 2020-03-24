@@ -1,8 +1,5 @@
 let mongoose = require('mongoose');
 
-const server = 'sandbox.aquasoft.vn';
-const database = 'tcp-test';
-
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
@@ -14,7 +11,7 @@ class Database {
     }
 
     _connect() {
-        mongoose.connect(`mongodb://${server}/${database}`)
+        mongoose.connect(process.env.DATABASE)
             .then(() => {
                 console.log('Database connection successful');
             })
